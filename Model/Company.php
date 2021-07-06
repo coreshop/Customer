@@ -14,9 +14,13 @@ declare(strict_types=1);
 
 namespace CoreShop\Component\Customer\Model;
 
-interface CustomerAwareInterface
-{
-    public function getCustomer(): ?CustomerInterface;
+use CoreShop\Component\Resource\Pimcore\Model\AbstractPimcoreModel;
+use Symfony\Component\Security\Core\User\UserInterface;
 
-    public function setCustomer(?CustomerInterface $customer);
+abstract class Company extends AbstractPimcoreModel implements CompanyInterface
+{
+    public function isEqualTo(UserInterface $user)
+    {
+        return $user instanceof self && $user->getId() === $this->getId();
+    }
 }

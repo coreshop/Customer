@@ -14,9 +14,17 @@ declare(strict_types=1);
 
 namespace CoreShop\Component\Customer\Model;
 
-interface CustomerAwareInterface
-{
-    public function getCustomer(): ?CustomerInterface;
+use CoreShop\Component\Resource\Model\ResourceInterface;
+use CoreShop\Component\Resource\Pimcore\Model\PimcoreModelInterface;
+use Symfony\Component\Security\Core\User\EquatableInterface;
 
-    public function setCustomer(?CustomerInterface $customer);
+interface CompanyInterface extends ResourceInterface, PimcoreModelInterface, EquatableInterface
+{
+    public function getName(): ?string;
+
+    public function setName(?string $name);
+
+    public function getVatIdentificationNumber(): ?string;
+
+    public function setVatIdentificationNumber(?string $vatIdentificationNumber);
 }

@@ -12,11 +12,19 @@
 
 declare(strict_types=1);
 
-namespace CoreShop\Component\Customer\Model;
+namespace CoreShop\Component\Customer\Repository;
 
-interface CustomerAwareInterface
+use CoreShop\Component\Customer\Model\CompanyInterface;
+use CoreShop\Component\Resource\Repository\PimcoreRepositoryInterface;
+
+interface CompanyRepositoryInterface extends PimcoreRepositoryInterface
 {
-    public function getCustomer(): ?CustomerInterface;
-
-    public function setCustomer(?CustomerInterface $customer);
+    /**
+     * Find Company by Name.
+     *
+     * @param string $name
+     *
+     * @return CompanyInterface|null
+     */
+    public function findCompanyByName($name);
 }
